@@ -1,6 +1,7 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const userRoutes = require('./routes/user-routes.js');
+import express from 'express';
+import mongoose from 'mongoose';
+import authRouter from './routes/auth-routes.js';
+import userRouter from './routes/user-routes.js';
 
 const PORT = 3000;
 const URL = 'mongodb://127.0.0.1:27017/usersDB';
@@ -17,4 +18,5 @@ app.listen(PORT, (err) => {
   err ? console.log(err) : console.log(`listening port ${PORT}`);
 });
 
-app.use(userRoutes);
+app.use(authRouter);
+app.use(userRouter);
