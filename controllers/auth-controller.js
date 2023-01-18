@@ -17,11 +17,11 @@ const signIn = async (req, res) => {
 };
 
 const signUp = async (req, res) => {
-  const { name, email, password } = req.body;
+  const { email } = req.body;
 
-  const foundedUser = await userService.findOneUser({ name, email, password });
+  const foundedUser = await userService.findOneUser({ email });
   if (foundedUser) {
-    res.status(409).json({ message: `Conflict: user-${name} already exist` });
+    res.status(409).json({ message: `Conflict: email already exist` });
   } else {
     try {
       const createdUser = await userService.createUser({ ...req.body, blockedStatus: false });
