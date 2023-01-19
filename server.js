@@ -1,12 +1,14 @@
 import express from 'express';
 import mongoose from 'mongoose';
+import cors from 'cors';
 import authRouter from './routes/auth-routes.js';
 import userRouter from './routes/user-routes.js';
 
-const PORT = 3000;
+const PORT = 4000;
 const URL = 'mongodb://127.0.0.1:27017/usersDB';
 
 const app = express();
+app.use(cors());
 app.use(express.json());
 
 mongoose
