@@ -3,12 +3,11 @@ import * as errorService from '../services/error-service.js';
 
 const signIn = async (req, res) => {
   const { name, password } = req.body;
-
   try {
     const foundedUser = await userService.findOneUser({ name });
 
     if (!foundedUser) {
-      return res.status(404).json({ message: `Not found: User is not found or User: ${name} have been removed)` });
+      return res.status(404).json({ message: `Not found: User is not found or User "${name}" have been removed)` });
     }
 
     if (foundedUser.blockedStatus) {
