@@ -4,15 +4,17 @@ import cors from 'cors';
 import authRouter from './routes/auth-routes.js';
 import userRouter from './routes/user-routes.js';
 
-const PORT = 4000;
-const URL = 'mongodb://127.0.0.1:27017/usersDB';
-
 const app = express();
 app.use(cors());
 app.use(express.json());
 
+const PORT = 4000;
+const URL = 'mongodb+srv://Itra:Itra123@cluster0.npu441t.mongodb.net/usersDB?retryWrites=true&w=majority';
+
+mongoose.set('strictQuery', false);
+
 mongoose
-  .connect(URL, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(`${URL}`, { useNewUrlParser: true, useUnifiedTopology: true })
   .then((res) => console.log('Connected to MongoDB'))
   .catch((err) => console.log(`DB connection error: ${err}`));
 
