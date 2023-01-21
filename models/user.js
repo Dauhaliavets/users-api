@@ -17,6 +17,7 @@ const userSchema = new Schema(
       required: true,
     },
     blockedStatus: Boolean,
+    lastVisit: String,
   },
   { timestamps: true },
 );
